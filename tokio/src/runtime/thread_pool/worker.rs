@@ -641,6 +641,10 @@ impl Core {
         if !self.is_shutdown {
             // Check if the scheduler has been shutdown
             self.is_shutdown = worker.inject().is_closed();
+
+            if self.is_shutdown {
+                log::debug!("The scheduler is being shutdown!");
+            }
         }
     }
 
